@@ -53,7 +53,7 @@ export function AccountShell({ active, title, description, children }: Props) {
     return (
         <div className="mx-auto w-full max-w-7xl px-4 py-8 md:px-6">
             <div className="mb-8 flex flex-col gap-1">
-                <span className="text-xs font-semibold tracking-[0.2em] text-brand uppercase">
+                <span className="text-brand text-xs font-semibold tracking-[0.2em] uppercase">
                     My Account
                 </span>
                 <h1 className="font-display text-3xl font-semibold tracking-tight">

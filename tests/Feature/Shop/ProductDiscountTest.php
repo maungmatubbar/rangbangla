@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Testing\AssertableInertia;
 
 it('derives the sale price from the discount percentage', function () {
@@ -53,7 +54,7 @@ it('charges the discounted price at checkout', function () {
 
     $this->actingAs($user);
     $this->post('/checkout/otp', ['phone' => '01700000000'])->assertRedirect();
-    $code = \Illuminate\Support\Facades\Cache::get('otp:checkout:01700000000');
+    $code = Cache::get('otp:checkout:01700000000');
 
     $this->withSession(['cart' => [$variant->id => 1]])
         ->post('/checkout', [

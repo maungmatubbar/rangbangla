@@ -43,7 +43,7 @@ export function StoreSearch({ className, autoFocus, onSubmitted }: Props) {
             <button
                 type="submit"
                 aria-label="Search"
-                className="bg-primary text-primary-foreground absolute top-1/2 right-1.5 flex size-8 -translate-y-1/2 items-center justify-center rounded-full shadow-sm transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:outline-none active:scale-95"
+                className="absolute top-1/2 right-1.5 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:outline-none active:scale-95"
             >
                 <ArrowRight className="size-4" />
             </button>

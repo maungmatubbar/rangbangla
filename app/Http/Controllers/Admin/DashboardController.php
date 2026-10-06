@@ -53,7 +53,7 @@ class DashboardController extends Controller
             ->get()
             ->keyBy('d');
 
-        return collect(range(13, 0))->map(function (int $ago) use ($byDay): array {
+        return array_values(collect(range(13, 0))->map(function (int $ago) use ($byDay): array {
             $date = now()->subDays($ago);
             $row = $byDay->get($date->format('Y-m-d'));
 
@@ -62,7 +62,7 @@ class DashboardController extends Controller
                 'orders' => (int) ($row->orders_count ?? 0),
                 'revenue' => (int) round((($row->revenue ?? 0)) / 100),
             ];
-        })->all();
+        })->all());
     }
 
     /**
@@ -75,13 +75,13 @@ class DashboardController extends Controller
             ->groupBy('status')
             ->pluck('count', 'status');
 
-        return collect(OrderStatus::cases())
+        return array_values(collect(OrderStatus::cases())
             ->map(fn (OrderStatus $status): array => [
                 'status' => $status->value,
                 'label' => $status->label(),
                 'count' => (int) ($counts[$status->value] ?? 0),
             ])
-            ->all();
+            ->all());
     }
 
     /**
@@ -89,15 +89,20 @@ class DashboardController extends Controller
      */
     private function categoryBreakdown(): array
     {
-        return Product::query()
+        $rows = Product::query()
             ->selectRaw('category, COUNT(*) as count')
             ->whereNotNull('category')
             ->groupBy('category')
             ->orderByDesc('count')
             ->limit(6)
             ->get()
-            ->map(fn ($row): array => ['label' => (string) $row->category, 'count' => (int) $row->count])
+            ->map(fn (Product $row): array => [
+                'label' => (string) $row->category,
+                'count' => (int) $row->getAttribute('count'),
+            ])
             ->all();
+
+        return array_values($rows);
     }
 
     /**
@@ -110,15 +115,23 @@ class DashboardController extends Controller
             ->latest()
             ->limit(6)
             ->get()
-            ->map(fn (Order $order): array => [
-                'id' => $order->id,
-                'order_number' => $order->order_number,
-                'customer' => $order->customer_name ?? $order->user?->name,
-                'status' => $order->status->value,
-                'status_label' => $order->status->label(),
-                'payment_status' => $order->payment_status,
-                'formatted_total' => $order->formatted_total,
-                'created_at' => $order->created_at,
-            ]);
+            ->map(fn (Order $order): array => $this->presentRecentOrder($order));
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function presentRecentOrder(Order $order): array
+    {
+        return [
+            'id' => $order->id,
+            'order_number' => $order->order_number,
+            'customer' => $order->customer_name ?? $order->user?->name,
+            'status' => $order->status->value,
+            'status_label' => $order->status->label(),
+            'payment_status' => $order->payment_status,
+            'formatted_total' => $order->formatted_total,
+            'created_at' => $order->created_at,
+        ];
     }
 }

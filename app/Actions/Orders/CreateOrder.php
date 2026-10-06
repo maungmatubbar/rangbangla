@@ -44,7 +44,7 @@ class CreateOrder
 
                 if ($variant === null || $variant->product === null || ! $variant->product->is_active) {
                     throw ValidationException::withMessages([
-                        'items' => "A selected item is no longer available for purchase.",
+                        'items' => 'A selected item is no longer available for purchase.',
                     ]);
                 }
 

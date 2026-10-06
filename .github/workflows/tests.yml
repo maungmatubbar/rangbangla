@@ -32,7 +32,15 @@ jobs:
           node-version: '22'
 
       - name: Setup Application
-        run: composer setup
+        env:
+          # CI has no MySQL/Redis services; run setup's `migrate --force`
+          # against a throwaway SQLite file. Scoped to this step only so the
+          # test step still uses phpunit.xml's in-memory SQLite database.
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: |
+          touch database/database.sqlite
+          composer setup
 
       - name: Run CI Checks
         run: composer ci:check

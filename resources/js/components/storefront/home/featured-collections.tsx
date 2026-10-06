@@ -68,7 +68,7 @@ export function FeaturedCollections() {
                         <span className="text-sm text-white/85">
                             {collection.blurb}
                         </span>
-                        <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand">
+                        <span className="text-brand mt-3 inline-flex items-center gap-1 text-sm font-medium">
                             Shop now
                             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </span>

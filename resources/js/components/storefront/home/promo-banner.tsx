@@ -18,7 +18,7 @@ export function PromoBanner() {
             {/* Dotted texture overlay. */}
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-[0.14] [background-image:radial-gradient(circle,white_1px,transparent_1px)] [background-size:22px_22px]"
+                className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,white_1px,transparent_1px)] [background-size:22px_22px] opacity-[0.14]"
             />
             {/* Inner highlight ring. */}
             <div

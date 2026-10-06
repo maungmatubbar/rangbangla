@@ -56,7 +56,7 @@ export function CategorySidebar({ className }: { className?: string }) {
             )}
         >
             <div className="flex items-center gap-2 border-b bg-secondary/40 px-4 py-3">
-                <span className="bg-lime size-2 rounded-full" />
+                <span className="size-2 rounded-full bg-lime" />
                 <span className="text-sm font-semibold tracking-tight">
                     All Categories
                 </span>

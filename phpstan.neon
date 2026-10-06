@@ -11,3 +11,8 @@ parameters:
         - routes/
 
     level: 7
+
+    # Eloquent @property-read relation annotations (e.g. a belongsTo typed as
+    # non-null) are optimistic: the relation can be null at runtime. Don't treat
+    # PHPDoc types as certain, so defensive null checks aren't flagged as dead.
+    treatPhpDocTypesAsCertain: false

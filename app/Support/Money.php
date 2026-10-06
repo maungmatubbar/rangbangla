@@ -14,6 +14,9 @@ class Money
 
     public const SYMBOL = '৳';
 
+    /**
+     * @return non-falsy-string
+     */
     public static function format(int $minor): string
     {
         return self::SYMBOL.number_format($minor / 100, 0);

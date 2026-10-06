@@ -14,9 +14,11 @@ class CustomerController extends Controller
 {
     public function index(Request $request): Response
     {
+        $term = (string) $request->query('q', '');
+
         $customers = User::query()
             ->where('is_admin', false)
-            ->when($request->query('q'), fn ($q, $term) => $q->where(fn ($qq) => $qq
+            ->when($term !== '', fn ($q) => $q->where(fn ($qq) => $qq
                 ->where('name', 'like', "%{$term}%")
                 ->orWhere('email', 'like', "%{$term}%")
                 ->orWhere('phone', 'like', "%{$term}%")))
@@ -37,7 +39,7 @@ class CustomerController extends Controller
 
         return Inertia::render('admin/customers/index', [
             'customers' => $customers,
-            'filters' => ['q' => (string) $request->query('q', '')],
+            'filters' => ['q' => $term],
         ]);
     }
 

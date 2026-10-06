@@ -80,7 +80,7 @@ export default function ProductsIndex({
             <div className="border-b bg-secondary/30">
                 <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 md:px-6">
                     <div className="flex flex-col gap-1">
-                        <span className="text-xs font-semibold tracking-[0.2em] text-brand uppercase">
+                        <span className="text-brand text-xs font-semibold tracking-[0.2em] uppercase">
                             The Collection
                         </span>
                         <h1 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">

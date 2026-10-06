@@ -22,8 +22,8 @@ export function PageHero({
     align = 'left',
 }: Props) {
     const Eyebrow = (
-        <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-brand uppercase">
-            <span className="bg-lime h-0.5 w-6 rounded-full" />
+        <span className="text-brand inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] uppercase">
+            <span className="h-0.5 w-6 rounded-full bg-lime" />
             {eyebrow}
         </span>
     );

@@ -17,7 +17,7 @@ function CountBadge({ count }: { count: number }) {
         // Keying by count remounts the badge so the pop replays on every change.
         <span
             key={count}
-            className="bg-lime text-lime-ink animate-badge-pop absolute -top-1 -right-1 inline-flex min-w-4.5 items-center justify-center rounded-full px-1 text-[0.6rem] font-semibold shadow-sm"
+            className="animate-badge-pop absolute -top-1 -right-1 inline-flex min-w-4.5 items-center justify-center rounded-full bg-lime px-1 text-[0.6rem] font-semibold text-lime-ink shadow-sm"
         >
             {count > 99 ? '99+' : count}
         </span>

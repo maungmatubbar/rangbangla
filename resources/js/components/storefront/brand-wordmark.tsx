@@ -15,7 +15,7 @@ export function BrandWordmark({ className, inverted = false }: Props) {
             className={cn('group flex flex-col leading-none', className)}
             aria-label="Rangbangla home"
         >
-            <span className="font-sans text-[0.6rem] font-medium tracking-[0.35em] text-brand uppercase">
+            <span className="text-brand font-sans text-[0.6rem] font-medium tracking-[0.35em] uppercase">
                 রংবাংলা
             </span>
             <span

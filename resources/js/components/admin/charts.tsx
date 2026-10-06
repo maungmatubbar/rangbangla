@@ -221,7 +221,7 @@ export function BarList({ items }: { items: ChartPoint[] }) {
                     </div>
                     <div className="h-2 overflow-hidden rounded-full bg-muted">
                         <div
-                            className="bg-lime h-full rounded-full"
+                            className="h-full rounded-full bg-lime"
                             style={{ width: `${(item.value / max) * 100}%` }}
                         />
                     </div>

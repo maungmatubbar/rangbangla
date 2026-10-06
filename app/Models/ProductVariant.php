@@ -92,7 +92,7 @@ class ProductVariant extends Model
     /**
      * A short human label, e.g. "M / Maroon", "Free Size" or "Default".
      *
-     * @return Attribute<string, never>
+     * @return Attribute<non-falsy-string, never>
      */
     protected function label(): Attribute
     {

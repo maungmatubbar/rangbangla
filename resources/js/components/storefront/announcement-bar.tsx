@@ -22,7 +22,7 @@ export function AnnouncementBar() {
                     key={message}
                     className="flex items-center gap-2 text-xs font-medium whitespace-nowrap sm:text-sm"
                 >
-                    <Sparkles className="text-lime-ink/70 size-3.5" />
+                    <Sparkles className="size-3.5 text-lime-ink/70" />
                     {message}
                 </span>
             ))}
@@ -30,7 +30,7 @@ export function AnnouncementBar() {
     );
 
     return (
-        <div className="bg-brand-gradient-x text-lime-ink relative overflow-hidden">
+        <div className="bg-brand-gradient-x relative overflow-hidden text-lime-ink">
             <div className="group flex overflow-hidden py-2">
                 <div className="animate-marquee flex items-center group-hover:[animation-play-state:paused]">
                     {track}
@@ -41,7 +41,7 @@ export function AnnouncementBar() {
                 type="button"
                 onClick={() => setVisible(false)}
                 aria-label="Dismiss announcement"
-                className="text-lime-ink/60 hover:text-lime-ink absolute top-1/2 right-3 z-10 -translate-y-1/2 rounded-full bg-black/10 p-1 backdrop-blur transition-colors hover:bg-black/15"
+                className="absolute top-1/2 right-3 z-10 -translate-y-1/2 rounded-full bg-black/10 p-1 text-lime-ink/60 backdrop-blur transition-colors hover:bg-black/15 hover:text-lime-ink"
             >
                 <X className="size-3.5" />
             </button>

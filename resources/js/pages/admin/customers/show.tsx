@@ -123,7 +123,7 @@ export default function CustomerShow({
                                     {stats.spent}
                                 </span>
                             </div>
-                            <div className="bg-lime/15 text-lime-ink flex size-11 items-center justify-center rounded-xl">
+                            <div className="flex size-11 items-center justify-center rounded-xl bg-lime/15 text-lime-ink">
                                 <Wallet className="size-5" />
                             </div>
                         </CardContent>

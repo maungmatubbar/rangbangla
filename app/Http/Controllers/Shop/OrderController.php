@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Actions\Orders\CompleteOrder;
+use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
@@ -41,10 +42,10 @@ class OrderController extends Controller
         return Inertia::render('shop/orders/show', [
             'order' => json_decode((string) json_encode(new OrderResource($order)), true),
             'tracking' => array_map(
-                fn (\App\Enums\OrderStatus $status): array => ['value' => $status->value, 'label' => $status->label()],
-                \App\Enums\OrderStatus::trackingSteps(),
+                fn (OrderStatus $status): array => ['value' => $status->value, 'label' => $status->label()],
+                OrderStatus::trackingSteps(),
             ),
-            'canReturn' => $order->status === \App\Enums\OrderStatus::Completed
+            'canReturn' => $order->status === OrderStatus::Completed
                 && ! $order->returnRequests->whereIn('status', ['requested', 'approved'])->count(),
             'returns' => $order->returnRequests->map(fn ($r): array => [
                 'id' => $r->id,

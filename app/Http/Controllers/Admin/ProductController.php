@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Support\Money;
+use Database\Factories\ProductVariantFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -161,7 +162,7 @@ class ProductController extends Controller
         return [
             'categories' => self::CATEGORIES,
             'sizes' => ['S', 'M', 'L', 'XL', 'XXL', 'Free Size'],
-            'colors' => collect(\Database\Factories\ProductVariantFactory::COLORS)
+            'colors' => collect(ProductVariantFactory::COLORS)
                 ->map(fn (string $hex, string $name): array => ['color' => $name, 'color_hex' => $hex])
                 ->values(),
         ];

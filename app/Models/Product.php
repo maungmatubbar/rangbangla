@@ -121,16 +121,22 @@ class Product extends Model
      */
     public function availableColors(): array
     {
-        return $this->variants
-            ->where('is_active', true)
-            ->filter(fn (ProductVariant $variant): bool => filled($variant->color))
-            ->unique('color')
-            ->map(fn (ProductVariant $variant): array => [
-                'color' => $variant->color,
+        $colors = [];
+
+        foreach ($this->variants->where('is_active', true) as $variant) {
+            $color = $variant->color;
+
+            if ($color === null || trim($color) === '') {
+                continue;
+            }
+
+            $colors[$color] ??= [
+                'color' => $color,
                 'color_hex' => $variant->color_hex,
-            ])
-            ->values()
-            ->all();
+            ];
+        }
+
+        return array_values($colors);
     }
 
     /**
@@ -171,7 +177,7 @@ class Product extends Model
      * A percentage markdown strikes through the original price; otherwise the
      * manual compare-at price is used.
      *
-     * @return Attribute<string|null, never>
+     * @return Attribute<non-falsy-string|null, never>
      */
     protected function formattedCompareAtPrice(): Attribute
     {

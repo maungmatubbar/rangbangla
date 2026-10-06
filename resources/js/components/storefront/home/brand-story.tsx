@@ -24,12 +24,12 @@ export function BrandStory() {
             {/* Soft lime glow for depth. */}
             <div
                 aria-hidden
-                className="bg-lime pointer-events-none absolute -top-24 -right-20 size-72 rounded-full opacity-25 blur-3xl"
+                className="pointer-events-none absolute -top-24 -right-20 size-72 rounded-full bg-lime opacity-25 blur-3xl"
             />
 
             <div className="relative flex flex-col gap-4">
                 <span className="inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.2em] uppercase">
-                    <span className="bg-lime h-0.5 w-8 rounded-full" />
+                    <span className="h-0.5 w-8 rounded-full bg-lime" />
                     <span className="text-foreground/70">Our Story</span>
                 </span>
                 <h2 className="font-display text-3xl font-semibold tracking-tight text-balance md:text-4xl">
@@ -50,7 +50,7 @@ export function BrandStory() {
                         key={title}
                         className="group flex flex-col gap-2 rounded-2xl border bg-background p-5 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/15 hover:shadow-lg"
                     >
-                        <span className="bg-lime text-lime-ink inline-flex size-11 items-center justify-center rounded-xl shadow-sm ring-1 ring-black/5 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110">
+                        <span className="inline-flex size-11 items-center justify-center rounded-xl bg-lime text-lime-ink shadow-sm ring-1 ring-black/5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
                             <Icon className="size-5" />
                         </span>
                         <h3 className="font-medium">{title}</h3>

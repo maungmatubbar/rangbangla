@@ -2,7 +2,6 @@
 
 use App\Models\Coupon;
 use App\Models\User;
-use App\Support\Cart;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Testing\AssertableInertia;
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -50,9 +51,9 @@ expect()->extend('toBeOne', function () {
  * @param  array<string, mixed>  $attributes
  * @param  array<string, mixed>  $variantAttributes
  */
-function purchasableProduct(array $attributes = [], array $variantAttributes = []): \App\Models\Product
+function purchasableProduct(array $attributes = [], array $variantAttributes = []): Product
 {
-    $product = \App\Models\Product::factory()->create($attributes);
+    $product = Product::factory()->create($attributes);
 
     $product->variants()->create(array_merge([
         'size' => 'M',

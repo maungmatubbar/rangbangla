@@ -108,7 +108,7 @@ export function HeroSlider() {
                                 className="flex max-w-xl flex-col items-start gap-5 text-white"
                             >
                                 <span className="inline-flex animate-in items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.25em] text-white uppercase backdrop-blur duration-500 fade-in slide-in-from-bottom-2">
-                                    <span className="bg-lime size-1.5 rounded-full" />
+                                    <span className="size-1.5 rounded-full bg-lime" />
                                     {slide.eyebrow}
                                 </span>
                                 <h1 className="animate-in font-display text-5xl leading-[1.05] font-semibold tracking-tight text-balance duration-700 fade-in slide-in-from-bottom-4 md:text-7xl">

@@ -17,12 +17,13 @@ class OrderController extends Controller
     {
         $status = (string) $request->query('status', '');
         $payment = (string) $request->query('payment', '');
+        $term = (string) $request->query('q', '');
 
         $orders = Order::query()
             ->with('user')
             ->when($status !== '', fn ($q) => $q->where('status', $status))
             ->when($payment !== '', fn ($q) => $q->where('payment_status', $payment))
-            ->when($request->query('q'), fn ($q, $term) => $q->where(fn ($qq) => $qq
+            ->when($term !== '', fn ($q) => $q->where(fn ($qq) => $qq
                 ->where('order_number', 'like', "%{$term}%")
                 ->orWhere('customer_name', 'like', "%{$term}%")
                 ->orWhere('phone', 'like', "%{$term}%")))
@@ -36,7 +37,7 @@ class OrderController extends Controller
             'filters' => [
                 'status' => $status,
                 'payment' => $payment,
-                'q' => (string) $request->query('q', ''),
+                'q' => $term,
             ],
             'statuses' => $this->statusOptions(),
         ]);

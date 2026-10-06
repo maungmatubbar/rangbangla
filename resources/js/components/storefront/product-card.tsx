@@ -116,7 +116,7 @@ export function ProductCard({ product, className }: Props) {
                     {product.in_stock &&
                         product.is_new &&
                         discount === null && (
-                            <span className="bg-lime text-lime-ink rounded-full px-2.5 py-1 text-xs font-semibold shadow-sm">
+                            <span className="rounded-full bg-lime px-2.5 py-1 text-xs font-semibold text-lime-ink shadow-sm">
                                 New
                             </span>
                         )}

@@ -29,8 +29,8 @@ class CheckoutController extends Controller
             'cart' => $cart->summary(),
             'defaultAddress' => $default,
             'contact' => [
-                'name' => $default?->name ?? $user->name,
-                'phone' => $default?->phone ?? $user->phone,
+                'name' => $default->name ?? $user->name,
+                'phone' => $default->phone ?? $user->phone,
             ],
         ]);
     }

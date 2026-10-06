@@ -126,11 +126,7 @@
 
     /* Dark gradient for hero / marketing sections (the "black" of lime + black). */
     --brand-gradient: linear-gradient(135deg, #1f1f1f 0%, #000000 100%);
-    --brand-gradient-gold: linear-gradient(
-        135deg,
-        #aef00a 0%,
-        #80c000 100%
-    );
+    --brand-gradient-gold: linear-gradient(135deg, #aef00a 0%, #80c000 100%);
     /* Lime strip, swept horizontally (announcement bar / thin accents). */
     --brand-gradient-x: linear-gradient(
         90deg,
@@ -184,11 +180,7 @@
     --grid-line: rgba(255, 255, 255, 0.06);
 
     --brand-gradient: linear-gradient(135deg, #262626 0%, #050505 100%);
-    --brand-gradient-gold: linear-gradient(
-        135deg,
-        #aef00a 0%,
-        #80c000 100%
-    );
+    --brand-gradient-gold: linear-gradient(135deg, #aef00a 0%, #80c000 100%);
     --brand-gradient-x: linear-gradient(
         90deg,
         #aef00a 0%,
@@ -226,16 +218,8 @@
     /* Graph-paper grid used for the page background. */
     .bg-grid {
         background-image:
-            linear-gradient(
-                to right,
-                var(--grid-line) 1px,
-                transparent 1px
-            ),
-            linear-gradient(
-                to bottom,
-                var(--grid-line) 1px,
-                transparent 1px
-            );
+            linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
         background-size: 6rem 4rem;
     }
 
