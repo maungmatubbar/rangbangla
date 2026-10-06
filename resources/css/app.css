@@ -1,0 +1,501 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-display:
+        'Fraunces', 'Instrument Sans', ui-serif, Georgia, Cambria,
+        'Times New Roman', serif;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-gold: var(--gold);
+    --color-gold-foreground: var(--gold-foreground);
+
+    --color-lime: var(--lime);
+    --color-lime-ink: var(--lime-ink);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+ * Rangbangla "Lime + Black" palette — a modern, high-contrast DTC look:
+ * a near-white canvas with near-black text and sleek black primary buttons
+ * (the structural "black"), and a single signature lime accent `#9EE301`
+ * (`--lime` / `--gold`, the `.btn-lime` CTA and `bg-lime` fills) used for
+ * calls to action, badges, the announcement strip and highlights. Dark
+ * marketing sections use the near-black `--brand-gradient`. Lime is used as a
+ * FILL (with near-black ink) or on dark backgrounds — never as small text on
+ * white, where it would be illegible. (Red `--destructive` kept for errors.)
+ */
+:root {
+    --background: oklch(0.97 0 0);
+    --foreground: oklch(0.18 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.18 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.18 0 0);
+    --primary: oklch(0.2 0 0);
+    --primary-foreground: oklch(0.98 0 0);
+    --secondary: oklch(0.95 0 0);
+    --secondary-foreground: oklch(0.24 0 0);
+    --muted: oklch(0.96 0 0);
+    --muted-foreground: oklch(0.45 0 0);
+    --accent: oklch(0.92 0 0);
+    --accent-foreground: oklch(0.25 0 0);
+    --gold: #9ee301;
+    --gold-foreground: oklch(0.16 0 0);
+    --destructive: oklch(0.55 0.21 25);
+    --destructive-foreground: oklch(0.98 0 0);
+    --border: oklch(0.9 0 0);
+    --input: oklch(0.9 0 0);
+    --ring: rgba(158, 227, 1, 0.55);
+    --chart-1: oklch(0.2 0 0);
+    --chart-2: #9ee301;
+    --chart-3: oklch(0.55 0 0);
+    --chart-4: oklch(0.68 0 0);
+    --chart-5: oklch(0.8 0 0);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.24 0 0);
+    --sidebar-primary: oklch(0.2 0 0);
+    --sidebar-primary-foreground: oklch(0.98 0 0);
+    --sidebar-accent: oklch(0.92 0 0);
+    --sidebar-accent-foreground: oklch(0.25 0 0);
+    --sidebar-border: oklch(0.9 0 0);
+    --sidebar-ring: oklch(0.2 0 0 / 0.4);
+
+    /* Signature lime accent #9EE301 (btn-lime + bg-lime / text-lime utilities). */
+    --lime: #9ee301;
+    --lime-ink: oklch(0.16 0 0);
+
+    /* Subtle grid-line colour for the page background. */
+    --grid-line: rgba(17, 17, 17, 0.05);
+
+    /* Dark gradient for hero / marketing sections (the "black" of lime + black). */
+    --brand-gradient: linear-gradient(135deg, #1f1f1f 0%, #000000 100%);
+    --brand-gradient-gold: linear-gradient(
+        135deg,
+        #aef00a 0%,
+        #80c000 100%
+    );
+    /* Lime strip, swept horizontally (announcement bar / thin accents). */
+    --brand-gradient-x: linear-gradient(
+        90deg,
+        #aef00a 0%,
+        #9ee301 50%,
+        #80c000 100%
+    );
+    --section-y: 4rem;
+    --section-y-lg: 6rem;
+}
+
+.dark {
+    --background: oklch(0.16 0 0);
+    --foreground: oklch(0.96 0 0);
+    --card: oklch(0.2 0 0);
+    --card-foreground: oklch(0.96 0 0);
+    --popover: oklch(0.2 0 0);
+    --popover-foreground: oklch(0.96 0 0);
+    --primary: oklch(0.92 0 0);
+    --primary-foreground: oklch(0.2 0 0);
+    --secondary: oklch(0.26 0 0);
+    --secondary-foreground: oklch(0.96 0 0);
+    --muted: oklch(0.24 0 0);
+    --muted-foreground: oklch(0.7 0 0);
+    --accent: oklch(0.3 0 0);
+    --accent-foreground: oklch(0.95 0 0);
+    --gold: #9ee301;
+    --gold-foreground: oklch(0.16 0 0);
+    --destructive: oklch(0.62 0.2 25);
+    --destructive-foreground: oklch(0.98 0 0);
+    --border: oklch(0.3 0 0);
+    --input: oklch(0.32 0 0);
+    --ring: rgba(158, 227, 1, 0.55);
+    --chart-1: oklch(0.92 0 0);
+    --chart-2: #9ee301;
+    --chart-3: oklch(0.6 0 0);
+    --chart-4: oklch(0.45 0 0);
+    --chart-5: oklch(0.35 0 0);
+    --sidebar: oklch(0.2 0 0);
+    --sidebar-foreground: oklch(0.96 0 0);
+    --sidebar-primary: oklch(0.92 0 0);
+    --sidebar-primary-foreground: oklch(0.2 0 0);
+    --sidebar-accent: oklch(0.3 0 0);
+    --sidebar-accent-foreground: oklch(0.95 0 0);
+    --sidebar-border: oklch(0.3 0 0);
+    --sidebar-ring: oklch(0.92 0 0 / 0.5);
+
+    --lime: #9ee301;
+    --lime-ink: oklch(0.16 0 0);
+
+    --grid-line: rgba(255, 255, 255, 0.06);
+
+    --brand-gradient: linear-gradient(135deg, #262626 0%, #050505 100%);
+    --brand-gradient-gold: linear-gradient(
+        135deg,
+        #aef00a 0%,
+        #80c000 100%
+    );
+    --brand-gradient-x: linear-gradient(
+        90deg,
+        #aef00a 0%,
+        #9ee301 50%,
+        #80c000 100%
+    );
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    .font-display {
+        font-family: var(--font-display);
+        font-optical-sizing: auto;
+    }
+
+    .bg-brand-gradient {
+        background-image: var(--brand-gradient);
+    }
+
+    .bg-brand-gradient-gold {
+        background-image: var(--brand-gradient-gold);
+    }
+
+    .bg-brand-gradient-x {
+        background-image: var(--brand-gradient-x);
+    }
+
+    /* Graph-paper grid used for the page background. */
+    .bg-grid {
+        background-image:
+            linear-gradient(
+                to right,
+                var(--grid-line) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                to bottom,
+                var(--grid-line) 1px,
+                transparent 1px
+            );
+        background-size: 6rem 4rem;
+    }
+
+    /* Soft lime glow at the top (lime + black theme). */
+    .bg-brand-spotlight {
+        background-image:
+            radial-gradient(
+                46rem 24rem at 50% -4rem,
+                rgba(158, 227, 1, 0.22),
+                transparent 66%
+            ),
+            radial-gradient(
+                40rem 22rem at 15% -2rem,
+                rgba(158, 227, 1, 0.1),
+                transparent 60%
+            ),
+            radial-gradient(
+                40rem 22rem at 85% -2rem,
+                rgba(158, 227, 1, 0.1),
+                transparent 60%
+            );
+    }
+
+    /* Brand gradient clipped to text — for eyebrows / accent words. */
+    .text-gradient-brand {
+        background-image: var(--brand-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* Thin neutral hairline used to frame festive sections. */
+    .text-gold {
+        color: var(--gold);
+    }
+
+    /* Slow Ken Burns zoom for hero slides. */
+    @keyframes kenburns {
+        from {
+            transform: scale(1.02);
+        }
+        to {
+            transform: scale(1.14);
+        }
+    }
+
+    .animate-kenburns {
+        animation: kenburns 7s ease-out forwards;
+    }
+
+    /* Animated multi-colour brand wordmark. */
+    @keyframes brand-shimmer {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 200% 50%;
+        }
+    }
+
+    /* Logo wordmark — near-black with a lime shimmer sweeping through. */
+    .brand-animated {
+        background-image: linear-gradient(
+            90deg,
+            #111611,
+            #3f6212,
+            #9ee301,
+            #c6ff4a,
+            #9ee301,
+            #3f6212,
+            #111611
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: brand-shimmer 9s linear infinite;
+    }
+
+    /* Modern sliding gradient underline for nav items. */
+    .nav-underline {
+        position: relative;
+    }
+
+    .nav-underline::after {
+        content: '';
+        position: absolute;
+        left: 0.5rem;
+        right: 0.5rem;
+        bottom: 0.3rem;
+        height: 2px;
+        border-radius: 2px;
+        background-color: var(--lime);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+    }
+
+    .nav-underline:hover::after,
+    .nav-underline[data-active='true']::after {
+        transform: scaleX(1);
+    }
+
+    /* ---- Modern e-commerce motion ---------------------------------- */
+
+    /* Soft entrance used on page mount and section reveals. */
+    @keyframes fade-rise {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-rise {
+        animation: fade-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* Page content fades in on each Inertia navigation. */
+    .page-enter {
+        animation: fade-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* Pop used on cart / wishlist count badges when they change. */
+    @keyframes badge-pop {
+        0% {
+            transform: scale(0.6);
+            opacity: 0;
+        }
+        60% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .animate-badge-pop {
+        animation: badge-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    /* Heart "like" pop for the wishlist toggle. */
+    @keyframes heart-pop {
+        0% {
+            transform: scale(1);
+        }
+        40% {
+            transform: scale(1.35);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .animate-heart-pop {
+        animation: heart-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Continuous horizontal marquee for the announcement bar. */
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-marquee {
+        animation: marquee 32s linear infinite;
+    }
+
+    /* Glossy sheen that sweeps across primary CTAs on hover. */
+    .btn-sheen {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-sheen::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        transform: translateX(-120%);
+        background: linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.25) 50%,
+            transparent 100%
+        );
+        transition: transform 0.6s ease;
+        pointer-events: none;
+    }
+
+    .btn-sheen:hover::after {
+        transform: translateX(120%);
+    }
+
+    /* Gentle float for decorative hero accents. */
+    @keyframes float-slow {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .animate-float-slow {
+        animation: float-slow 6s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .animate-fade-rise,
+        .page-enter,
+        .animate-badge-pop,
+        .animate-heart-pop,
+        .animate-marquee,
+        .animate-kenburns,
+        .animate-float-slow,
+        .brand-animated {
+            animation: none !important;
+        }
+
+        .btn-sheen::after {
+            display: none;
+        }
+    }
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Clickable elements show the hand/pointer cursor on hover. */
+    button:not(:disabled),
+    [role='button']:not([aria-disabled='true']),
+    label[for],
+    summary,
+    a[href] {
+        cursor: pointer;
+    }
+}
+
+/*
+ * Light-on-dark CTA. Declared unlayered on purpose so it overrides Tailwind's
+ * layered `bg-primary` / `text-primary-foreground` utilities on the marketing
+ * call-to-action buttons (these always sit on dark imagery / gradients).
+ */
+.btn-lime {
+    background-color: var(--lime);
+    color: var(--lime-ink);
+    border-color: transparent;
+}
+
+.btn-lime:hover {
+    background-color: color-mix(in oklab, var(--lime) 90%, black);
+}

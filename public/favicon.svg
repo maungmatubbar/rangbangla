@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rb" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0208C"/>
+      <stop offset="0.5" stop-color="#7A4DAD"/>
+      <stop offset="1" stop-color="#3A92C4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#rb)"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
+        font-family="Georgia, 'Times New Roman', 'Noto Serif', serif"
+        font-size="42" font-weight="700" fill="#ffffff">R</text>
+</svg>
